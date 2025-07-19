@@ -1,0 +1,32 @@
+[
+  {
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "age": 25,
+    "city": "New York"
+  },
+  {
+    "name": "user2",
+    "email": "user2@gmail.com",
+    "age": 24,
+    "city": "Los Angeles"
+  },
+  {
+    "name": "user3",
+    "email": "user3@gmail.com",
+    "age": 23,
+    "city": "Chicago"
+  },
+  {
+    "name": "user4",
+    "email": "user4@gmail.com",
+    "age": 28,
+    "city": "Houston"
+  },
+  {
+    "name": "user5",
+    "email": "",
+    "age": 28,
+    "city": "Houston"
+  }
+]
