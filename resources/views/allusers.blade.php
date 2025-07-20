@@ -17,10 +17,8 @@
         <th>Email</th>
         <th>Age</th>
         <th>City</th>
-        <th>Created At</th>
         <th>View</th>
         <th>Action</th>
-
       </tr>
     </thead>
     <tbody>
@@ -31,10 +29,11 @@
         <td>{{ $user->email }}</td>
         <td>{{ $user->age }}</td>
         <td>{{ $user->city }}</td>
-        <td>{{ $user->created_at }}</td>
         <td><a href="{{route('view.user',$user->id)}}" class="btn btn-outline-primary btn-sm">view</a></td>
-        <td><a href="{{route('view.user',$user->id)}}" class="btn btn-outline-success btn-sm">Edit</a>
-        <a href="{{route('view.delete',$user->id)}}" class="btn btn-outline-danger btn-sm">delete</a></td>
+        <td>
+            {{-- <a href="{{route('view.user',$user->id)}}" class="btn btn-outline-success btn-sm">Edit</a> --}}
+            <a href="{{route('delete.user',$user->id)}}" class="btn btn-outline-danger btn-sm">delete</a>
+         </td>
       </tr>
       @endforeach
     </tbody>

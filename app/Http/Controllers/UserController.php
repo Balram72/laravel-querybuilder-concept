@@ -187,9 +187,105 @@ class UserController extends Controller
         return view('user', ['data' => $user]);
     }
 
-    public function deleteUser($id){
-        DB::table('users')->where('id', $id)->delete();
-        $users = DB::table('users')->get();
-        return view('allusers', ['data' => $users]);
+    public function addUser(Request $request)
+    {
+        // Data to be inserted in use insert method
+            $users =  DB::table('users')
+                    ->insert([
+                        [
+                            'name' => 'Shyam',
+                            'email' => 'shyma@gmail.com',
+                            'age' => 27,
+                            'city' => 'Ganjam'
+                        ],
+                    ]);
+        // Data to be inserted in use insertOrIgnore method
+            // $users =  DB::table('users')
+            //         ->insertOrIgnore([     // This will ignore duplicate entries
+            //              [
+            //                 'name' => 'Ravi Das',
+            //                 'email' => 'ravi@gmail.com',
+            //                 'age' => 27,
+            //                 'city' => 'Ganjam'
+            //             ],
+            //         ]);
+        // Data to be inserted in use upsert method
+            // $users =  DB::table('users')
+            //         ->upsert(  // This will update existing records or insert new ones
+            //                [
+            //                 'name' => 'Ravi Das',
+            //                 'email' => 'abc@gmail.com',
+            //                 'age' => 21,
+            //                 'city' => 'rampur'
+            //                ],
+            //                ['email'], // Unique key to check for existing records
+            //                 ['city'] // Columns to update if a record exists
+            //  );
+        // Data to be inserted in use insertGetId method
+            //$users =  DB::table('users')
+            //         ->insertGetId([  // This will insert a new record and return the inserted ID. using only outoincrement id is available for  database
+            //            'name' => 'Rani Panda',
+            //             'email' => 'rani@gmail.com',
+            //             'age' => 22,
+            //             'city' => 'Bhubaneswar'
+            //     ]); 
+            // dd($users); 
+        if($users){
+            echo "<h1>Data Successfully Added.</h1>";
+        } else {
+             echo "<h1>Data Not Added.</h1>";
+        }
+
     }
+    public function updateUser()
+    {
+        // Data to be updated in use update method
+            $users = DB::table('users')
+                    ->where('id',13) // Specify the user ID to update
+                    ->update([
+                        'name' => 'Abc'
+                    ]);
+        // Data to be updateOrInsert method
+            // $users = DB::table('users')
+            //         ->updateOrInsert( // This will update the record if it exists, or insert a new one .
+            //             ['email' => 'user1@gmail.com','name' => 'user1'], 
+            //             ['email' => 'nesha@gmail.com','name'=>'Nesha'] 
+            //         );
+        // Data to be updated in use increment method
+            // $users = DB::table('users')
+            //         ->where('id', 13) // Specify the user ID to update
+            //         ->increment('age', 3); // Increment the age by 3
+        // Data to be updated in use decrement method
+            // $users = DB::table('users')
+            //         ->where('id', 13) // Specify the user ID to update
+            //         ->decrement('age', 2,['city'=>'Delhi']); // Decrement the age by 2
+        // data to be update incrementEach method
+            // $users = DB::table('users')
+            //         ->where('id', 13) // Specify the user ID to update
+            //         ->incrementEach(['age'=>2,'votes'=>1]); // Increment the age by 2 and votes by 1
+        
+  
+        if($users){
+            echo "<h1>Data Successfully Updated.</h1>";
+        } else {
+            echo "<h1>Data Not Updated.</h1>";  
+        }
+    }
+
+    public function deleteUser($id){
+        $users = DB::table('users')->where('id', $id)->delete();
+            if($users){
+                return redirect()->route('home');   
+            }else{
+                echo "<h1>Data Not Deleted.</h1>";
+            }
+    }
+
+    public function deleteAllUser(){
+        $users = DB::table('users')->truncate(); // This will delete all records in the users table
+        if($users){
+           return redirect()->route('home');
+        } 
+    }
+
 }
