@@ -23,12 +23,10 @@
       </tr>
     </thead>
     <tbody>
-      @php 
-        $i = 1;
-      @endphp
+      
       @foreach ($data as $id => $student)
       <tr>
-        <td>{{ $i++ }}</td>
+        <td>{{ $student->id }}</td>
         <td>{{ $student->name }}</td>
         <td>{{ $student->email }}</td>
         <td>{{ $student->age }}</td>
@@ -44,6 +42,20 @@
       @endforeach
     </tbody>
   </table>
+   <div>
+      {{-- using the only paginate method --}}
+      {{-- {{ $data->links('pagination::bootstrap-5') }} --}}
+
+      {{ $data->links() }}
+
+  </div>
+  <div>
+    {{-- using the only paginate method --}}
+    {{-- Total Student : {{ $data->total() }}</br>
+    Current Page : {{ $data->currentPage() }}</br>
+    Per Page : {{ $data->perPage() }}</br>
+    Last Page : {{ $data->lastPage() }}</br> --}}
+  </div>
 </div>
 </body>
 </html>
