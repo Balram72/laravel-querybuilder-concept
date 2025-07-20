@@ -187,7 +187,7 @@ class UserController extends Controller
         return view('user', ['data' => $user]);
     }
 
-    public function addUser(Request $request)
+    public function addUser()
     {
         // Data to be inserted in use insert method
             $users =  DB::table('users')
@@ -235,7 +235,6 @@ class UserController extends Controller
         } else {
              echo "<h1>Data Not Added.</h1>";
         }
-
     }
     public function updateUser()
     {
