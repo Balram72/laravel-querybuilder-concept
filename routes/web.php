@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\EmployeeController;
 
 // User Routes
 
@@ -27,7 +27,8 @@ Route::controller(StudentController::class)->group(function(){
 });
 Route::view('/newstudent', 'student.addstudent');
 
-
+// Employee Routes
+Route::get('/employee', [EmployeeController::class, 'showEmployee']);
 
 
 

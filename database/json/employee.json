@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Ram",
+    "email": "ram@gmail.com",
+    "age": 25,
+    "city": 1
+  },
+  {
+    "name": "Shyam",
+    "email": "shyam@gmail.com",
+    "age": 24,
+    "city": 2
+  },
+  {
+    "name": "Rani",
+    "email": "rani@gmail.com",
+    "age": 23,
+    "city": 3
+  },
+  {
+    "name": "Sita",
+    "email": "sita@gmail.com",
+    "age": 28,
+    "city": 2
+  },
+  {
+    "name": "Gita",
+    "email": "gita@gmail.com",
+    "age": 28,
+    "city": 1
+  },
+  {
+    "name": "soan",
+    "email": "sona@gmail.com",
+    "age": 28,
+    "city": 3
+  },
+  {
+    "name": "Nita",
+    "email": "nita@gmail.com",
+    "age": 28,
+    "city": 4
+  },
+  {
+    "name": "Mita",
+    "email": "mita@gmail.com",
+    "age": 28,
+    "city": 2
+  },
+  {
+    "name": "sunita",
+    "email": "sunita@gmail.com",
+    "age": 28,
+    "city": 5
+  }
+]
