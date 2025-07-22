@@ -60,4 +60,58 @@ class EmployeeController extends Controller
                 ->get(); 
              return view('employee',compact('employee'));         
     }
+
+    public function uniondata(){
+        $lecturers = DB::table('lecturers')
+            ->join('cities', 'lecturers.city', '=', 'cities.id')
+            ->select('name', 'email', 'city_name')
+            ->where('city_name', '=', 'Delhi' );
+            
+        $students = DB::table('students')
+            ->join('cities', 'students.city', '=', 'cities.id')
+            ->select('name', 'email', 'city_name')
+            ->union($lecturers)
+            ->where('city_name', '=', 'Chennai' )
+            ->get();
+
+        return $students;
+    }
+
+    public function whenData(){
+        $test = true; // change this to false to see the effect
+        $students = DB::table('students')
+            ->when($test, function ($query) {
+                $query->where('age', '>',20);  // flase  -> go to the else part
+            },function ($query) {
+                $query->where('age', '<', 20); //else part
+            })
+            ->get();
+        return $students;
+    }
+    public function chunkData(){
+        // using the chunk method to process large datasets
+                 $students = DB::table('students')
+                        ->orderBy('id')
+                        ->chunk(3, function ($students) {
+                            echo "<div style='margin-bottom: 20px;border:1px solid red'>";
+                                foreach ($students as $student) {
+                                    echo $student->name . '<br>';
+                                }
+                            echo "</div>";
+                        });
+
+        // use the chunkById method to process large datasets
+            // $students = DB::table('students')
+            //     ->orderBy('id')
+            //     ->chunkById(3, function  ($students) {
+            //         echo "<div style='margin-bottom: 20px;border:1px solid           red'>";     
+            //             foreach ($students as $student) {
+            //                DB:table('students')
+            //                 ->where('id', $student->id)
+            //                 ->update(['status' => 'true']);
+            //                 echo $student->name . '<br>';
+            //             }
+            //         echo "</div>";
+            //     });
+    }
 }

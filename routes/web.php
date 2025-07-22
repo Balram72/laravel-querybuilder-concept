@@ -29,6 +29,10 @@ Route::view('/newstudent', 'student.addstudent');
 
 // Employee Routes
 Route::get('/employee', [EmployeeController::class, 'showEmployee']);
+Route::get('/uniondata', [EmployeeController::class, 'uniondata']);
+Route::get('/when', [EmployeeController::class, 'whenData']);
+Route::get('/chunk', [EmployeeController::class, 'chunkData']);
+
 
 
 
